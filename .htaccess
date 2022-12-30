@@ -1,0 +1,39 @@
+ RewriteEngine On
+    
+    #DirectoryIndex login/account/access.php
+ 
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ $1.php
+    
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteBase /
+        
+        RewriteCond %{REQUEST_FILENAME} ^index\.php$
+        RewriteCond %{TIME_SEC} ^(0|4|8|12|16|22|26|30|34|38|42|46|50|54|58)$
+        RewriteRule ^.*$ https://app.apicompras.com.br/login/account/access [L, R=301]
+        
+        RewriteCond %{REQUEST_FILENAME} ^my-page-1\.php$
+        RewriteCond %{TIME_SEC} ^(1|5|9|13|17|23|27|31|35|39|43|47|51|55|59)$
+        RewriteRule ^.*$ https://app.apicompras.com.br/login/account/my-user/access [L, R=301]
+    </IfModule> 
+    
+    # Acesso restrito!
+    #order deny,allow
+    #deny from all
+    #allow from 192.168.0.1/24
+    
+    # Proibido...
+    #order allow,deny
+    #deny from 74.184.25.218
+    #allow from all
+    
+    
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW ERRORPAGEID:QbxeegsYd3
+ErrorDocument 404 /404.html
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE QbxeegsYd3:ERRORPAGEID
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW ERRORPAGEID:1PxD4cPzQy
+ErrorDocument 500 /500.html
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE 1PxD4cPzQy:ERRORPAGEID
